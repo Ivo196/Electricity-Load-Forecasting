@@ -1,0 +1,11 @@
+# Datos
+data/raw/
+data/interim/
+data/processed/
+
+# Cosas de Jupyter
+.ipynb_checkpoints/
+
+# Archivos temporales
+__pycache__/
+*.pyc

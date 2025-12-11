@@ -1,0 +1,51 @@
+### Nivel 1 – Extender tu modelo actual (más fácil)
+
+Con el LSTM one-step que ya tenés, haría:
+
+Implementar el recursive multi-step:
+
+Partís de la última ventana del test,
+
+predecís t+1,
+
+la metés en la ventana,
+
+predecís t+2,
+
+y así hasta t+24 (por ejemplo).
+
+Evaluar cómo crece el error al aumentar el horizonte:
+
+MAE(h=1), MAE(h=2), ..., MAE(h=24).
+
+Esto te enseña muy bien:
+
+cómo se degradan los modelos con el horizonte,
+
+cómo usar tu modelo actual para simular más adelante.
+
+###Nivel 2 – Modelo directo para 24h
+
+Luego, como paso siguiente:
+
+Cambiar la capa final para que devuelva un vector de tamaño 24 en vez de 1.
+
+Ajustar los datos para que:
+
+input = 168h de historia,
+
+target = las 24h siguientes (vector).
+
+Con esto comparás:
+
+LSTM one-step + recursivo (24 veces),
+
+vs LSTM multi-output (24 horas de una sola vez).
+
+### Nivel 3 – Si te pica el bicho de SOTA
+
+Recién ahí, más adelante:
+
+mirar arquitecturas tipo Temporal Fusion Transformer o N-BEATS,
+
+o incluso modelos preentrenados tipo Chronos/T5 adaptados a energía.

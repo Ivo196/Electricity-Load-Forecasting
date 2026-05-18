@@ -1,11 +1,11 @@
-# Datos
+# Data
 data/raw/
 data/interim/
 data/processed/
 
-# Cosas de Jupyter
+# Jupyter
 .ipynb_checkpoints/
 
-# Archivos temporales
+# Temporary files
 __pycache__/
 *.pyc

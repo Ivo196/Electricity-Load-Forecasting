@@ -1,51 +1,38 @@
-### Nivel 1 – Extender tu modelo actual (más fácil)
+### Level 1 - Extend the current model
 
-Con el LSTM one-step que ya tenés, haría:
+With the existing one-step LSTM, implement recursive multi-step forecasting:
 
-Implementar el recursive multi-step:
+- Start from the last available test window.
+- Predict t+1.
+- Insert the prediction back into the rolling window.
+- Predict t+2.
+- Continue up to t+24, or another forecast horizon.
 
-Partís de la última ventana del test,
+Evaluate how error grows as the horizon increases:
 
-predecís t+1,
+- MAE(h=1), MAE(h=2), ..., MAE(h=24)
 
-la metés en la ventana,
+This helps explain:
 
-predecís t+2,
+- how forecast quality degrades as the horizon becomes longer;
+- how a one-step model can be used for longer forecast simulations.
 
-y así hasta t+24 (por ejemplo).
+### Level 2 - Direct 24-hour model
 
-Evaluar cómo crece el error al aumentar el horizonte:
+As the next step:
 
-MAE(h=1), MAE(h=2), ..., MAE(h=24).
+- Change the final layer so it returns a vector of length 24 instead of a single value.
+- Prepare the data so the input is 168 hours of history and the target is the next 24 hours.
 
-Esto te enseña muy bien:
+Compare:
 
-cómo se degradan los modelos con el horizonte,
+- one-step LSTM used recursively 24 times;
+- multi-output LSTM that forecasts the next 24 hours directly.
 
-cómo usar tu modelo actual para simular más adelante.
+### Level 3 - Advanced architectures
 
-###Nivel 2 – Modelo directo para 24h
+Later, explore:
 
-Luego, como paso siguiente:
-
-Cambiar la capa final para que devuelva un vector de tamaño 24 en vez de 1.
-
-Ajustar los datos para que:
-
-input = 168h de historia,
-
-target = las 24h siguientes (vector).
-
-Con esto comparás:
-
-LSTM one-step + recursivo (24 veces),
-
-vs LSTM multi-output (24 horas de una sola vez).
-
-### Nivel 3 – Si te pica el bicho de SOTA
-
-Recién ahí, más adelante:
-
-mirar arquitecturas tipo Temporal Fusion Transformer o N-BEATS,
-
-o incluso modelos preentrenados tipo Chronos/T5 adaptados a energía.
+- Temporal Fusion Transformer;
+- N-BEATS;
+- pretrained time-series models adapted to energy demand forecasting.

@@ -1,0 +1,30 @@
+{
+  "best_validation_loss": 0.0002907026683493122,
+  "model_path": "models\\lstm_forecast.pt",
+  "sequence_length": 168,
+  "feature_columns": [
+    "nat_demand",
+    "T2M_toc",
+    "QV2M_toc",
+    "TQL_toc",
+    "W2M_toc",
+    "T2M_san",
+    "QV2M_san",
+    "TQL_san",
+    "W2M_san",
+    "T2M_dav",
+    "QV2M_dav",
+    "TQL_dav",
+    "W2M_dav",
+    "hour_sin",
+    "hour_cos",
+    "dayofweek_sin",
+    "dayofweek_cos",
+    "month_sin",
+    "month_cos",
+    "is_weekend",
+    "holiday",
+    "school"
+  ],
+  "target_column": "nat_demand"
+}

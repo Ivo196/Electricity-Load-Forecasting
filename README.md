@@ -63,6 +63,10 @@ Baseline metrics are computed on the untouched final test split.
 
 After training the LSTM, run the evaluation script again to add the neural model to `reports/metrics.csv` and generate the forecast plot in `reports/figures/`.
 
+## Dashboard Preview
+
+![Dashboard](reports/figures/dashboard_preview.png)
+
 ## Project Structure
 
 ```text
@@ -143,6 +147,13 @@ For reproducible project runs, prefer the scripts in `src/`.
 ## Denmark and Energinet Extension
 
 This version uses a Kaggle electricity demand dataset. For Denmark-focused energy roles, the natural next version is to reuse the same pipeline with Danish electricity consumption data from Energinet. That would make the problem framing more directly relevant to Nordic grid operations, day-ahead planning, renewable integration, and Danish market context.
+
+## What I Learned
+
+- How to structure time-series forecasting without random splits.
+- How to avoid leakage by fitting scalers only on training data.
+- How to compare deep learning models against simple baselines.
+- How electrical demand depends on weather, calendar patterns, and operational signals.
 
 ## Next Steps
 

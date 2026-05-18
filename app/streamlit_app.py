@@ -30,7 +30,7 @@ with metrics_col:
         for column in ["mae", "rmse", "mape"]:
             if column in display_metrics.columns:
                 display_metrics[column] = display_metrics[column].map(lambda value: f"{value:.2f}")
-        st.dataframe(display_metrics, use_container_width=True, hide_index=True)
+        st.table(display_metrics)
     else:
         st.info("Run `python -m src.evaluate` to generate reports/metrics.csv.")
 
